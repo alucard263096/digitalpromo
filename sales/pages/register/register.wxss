@@ -1,0 +1,14 @@
+/* pages/register/register.wxss */
+.bigheader{
+  padding:30rpx;
+  padding-top: 10rpx;
+}
+.quickreg{
+  margin-top: 40rpx;
+}
+.logininfo{
+  padding:40rpx;
+}
+.row{
+  margin-top: 30rpx;
+}

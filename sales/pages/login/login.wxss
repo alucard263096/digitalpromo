@@ -1,0 +1,11 @@
+/* pages/login/login.wxss */
+.bigheader{
+  padding:30rpx;
+  padding-top: 10rpx;
+}
+.quickreg{
+  margin-top: 40rpx;
+}
+.logininfo{
+  padding:40rpx;
+}

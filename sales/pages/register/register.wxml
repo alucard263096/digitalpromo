@@ -1,0 +1,61 @@
+<!--pages/register/register.wxml-->
+<!--pages/login/login.wxml-->
+<view class='bg-primary  flex-row bigheader'>
+  <view class='txt-white h1 '>快速注册</view>
+</view>
+
+<view class='logininfo'>
+  <view class='flex-row row'>
+    <view class='flex-1'>
+      <input type='text' maxlength='20' class='input h4' placeholder='请输入真实姓名' bindinput='nameChange' value='{{name}}' focus="{{true}}" auto-focus></input>
+    </view>
+  </view>
+  <view class='flex-row row'>
+    <view class='flex-1'>
+      <input type='number' maxlength='18' class='input h4' placeholder='请输入身份证号码' bindinput='idcardnoChange' value='{{idcardno}}'></input>
+    </view>
+  </view>
+
+  <view class='row flex-row text-center'>
+    <view class='flex-1'>
+      <image src='{{uploadpath}}resource/idcard.png' wx:if="{{idcard==''}}" style='width:90%;' mode="widthFix" bindtap='idcardChoose'></image>
+      <image src='{{uploadpath}}sales/{{idcard}}' wx:if="{{idcard!=''}}" style='width:90%;' mode="widthFix" bindtap='idcardChoose'></image>
+    </view>
+    <view class='flex-1'>
+      <image src='{{uploadpath}}resource/idcardback.png' wx:if="{{idcardback==''}}" style='width:90%;' mode="widthFix" bindtap='idcardbackChoose'></image>
+      <image src='{{uploadpath}}sales/{{idcardback}}' wx:if="{{idcardback!=''}}" style='width:90%;' mode="widthFix" bindtap='idcardbackChoose'></image>
+    </view>
+  </view>
+  <view class='row flex-row text-center'>
+    <view class='flex-1'>
+      <image src='{{uploadpath}}resource/idcardinhand.png' wx:if="{{idcardinhand==''}}" style='width:90%;' mode="widthFix" bindtap='idcardinhandChoose'></image>
+      <image src='{{uploadpath}}sales/{{idcardinhand}}' wx:if="{{idcardinhand!=''}}" style='width:90%;' mode="widthFix" bindtap='idcardinhandChoose'></image>
+    </view>
+    <view class='flex-1'>
+    </view>
+  </view>
+  <view class='flex-row row'>
+    <view class='flex-1'>
+      <textarea type='text' auto-height="true" maxlength='100' class='input h4' style='padding-bottom:20rpx;width:100%' placeholder='申请原因' bindinput='reasonChange' value='{{reason}}'></textarea>
+    </view>
+  </view>
+
+  <view class='flex-row row'>
+    <view class='flex-1'>
+      <input type='number' maxlength='11' class='input h4' placeholder='请输入手机号码'  bindinput='mobileChange' value='{{mobile}}'></input>
+    </view>
+    <view>
+      <button type="primary" size="mini" bindtap='sendVerifycode' wx:if="{{reminderResend==0}}" disabled="{{mobile.length!=11}}"> 获取验证码 </button>
+      <button type="primary" size="mini" wx:if="{{reminderResend>0}}" disabled="true"> 重新发送({{reminderResend}}) </button>
+    </view>
+  </view>
+  <view class='flex-row row'>
+    <view class='flex-1'>
+      <input type='number' maxlength='6' class='input h4' placeholder='请输入验证码' bindinput='verifycodeChange' value='{{verifycode}}'></input>
+    </view>
+  </view>
+</view>
+
+<view class='padding-20'>
+<button type='primary' bindtap='register'>提交注册</button>
+</view>

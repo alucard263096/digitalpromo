@@ -1,0 +1,13 @@
+/**index.wxss**/
+
+
+.dis {
+  margin-top: 50px;
+  color: #aaa;
+  padding:20rpx;
+}
+
+map{
+  height: 100vw;
+  width:100vw;
+}

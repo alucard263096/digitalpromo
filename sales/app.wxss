@@ -1,0 +1,72 @@
+/**app.wxss**/
+page{
+  background: #f9f9f9;
+}
+view,navigator{
+  color:#333;
+  font-size: 32rpx;
+}
+.flex-row{
+  display: flex;
+}
+.flex-1{
+  flex:1;
+}
+.text-center{
+  text-align: center;
+}
+.text-right{
+  text-align: right;
+}
+
+.bg-primary{
+  background: #F04848;
+}
+
+.txt-white{
+  color:white;
+}
+
+.h1{
+  font-size: 64rpx;
+}
+.h2{
+  font-size: 56rpx;
+}
+.h3{
+  font-size: 48rpx;
+}
+.h4{
+  font-size: 32rpx;
+}
+.h5{
+  font-size: 24rpx;
+}
+.h6{
+  font-size: 16rpx;
+}
+
+
+button[type=primary]{
+  
+  background-color: #F04848;
+}
+button.button-hover[type=primary]{
+  
+  background-color: #EE3535;
+}
+button[disabled][type=primary] {
+  background-color: #F8A9A9;
+}
+
+.input{
+  border-bottom:1rpx solid #ddd;
+  padding-bottom:10rpx;
+}
+
+.padding-20{
+  padding:20rpx;
+}
+.margin-20{
+  margin:20rpx;
+}

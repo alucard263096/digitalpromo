@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<view class="container">
+<view >深圳市数聚科技有限公司</view>
+<view class='dis'>深圳市数聚能源科技有限公司，注册资金1500万元，立足于电力改革的前沿，由电力IT行业翘楚创立，拥有精湛的大数据分析和移动互联网技术的潜力质优公司。公司成立初期已顺利通过ISO9001质量管理体系认证、CMMI Maturity Level 3认证，现已认定为深圳市高新技术企业、国家高新技术企业。</view>
+</view>
+
+<map ></map>

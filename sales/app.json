@@ -1,0 +1,14 @@
+{
+  "pages":[
+    "pages/register/register",
+    "pages/login/login",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#F04848",
+    "navigationBarTitleText": "数聚新零售",
+    "navigationBarTextStyle":"black"
+  }
+}
