@@ -1,0 +1,14 @@
+<!--pages/catetories/catetories.wxml-->
+<view class="flex-row" style='flex-wrap: wrap;padding-left:30rpx;'>
+        <block wx:for="{{categories}}" wx:key="categories">
+          <navigator url="/pages/category/category?id={{item.id}}&title={{item.name}}" class='cat-block flex-row'>
+            <view style='line-height: 0rpx;'>
+              <image src="{{uploadpath}}merchantcategory/{{item.logo}}"></image>
+            </view>
+            <view class='text-center flex-1'>
+              <view class='title'>{{item.name}}</view>
+              <view class='description'>{{item.merchantcount}}个商家</view>
+            </view>
+          </navigator>
+        </block>
+      </view>

@@ -1,6 +1,12 @@
 {
   "pages":[
+    "pages/catetories/catetories",
     "pages/home/home",
+    "pages/qrcode/qrcode",
+    "pages/category/category",
+    "pages/merchant/merchant",
+    "pages/static/static",
+    "pages/profile/profile",
     "pages/login/login",
     "pages/register/register",
     "pages/content/content",
@@ -12,5 +18,43 @@
     "navigationBarBackgroundColor": "#F04848",
     "navigationBarTitleText": "数聚新零售",
     "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "color": "#cdcdcd",
+    "selectedColor": "#F04848",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/home/home",
+        "iconPath": "images/icons/home.png",
+        "selectedIconPath": "images/icons/home-a.png"
+      },
+      {
+        "text": "商家",
+        "pagePath": "pages/catetories/catetories",
+        "iconPath": "images/icons/merchant.png",
+        "selectedIconPath": "images/icons/merchant-a.png"
+      },
+      {
+        "text": "二维码",
+        "pagePath": "pages/qrcode/qrcode",
+        "iconPath": "images/icons/qrcode.png",
+        "selectedIconPath": "images/icons/qrcode-a.png"
+      },
+      {
+        "text": "统计",
+        "pagePath": "pages/static/static",
+        "iconPath": "images/icons/fund.png",
+        "selectedIconPath": "images/icons/fund-a.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/profile/profile",
+        "iconPath": "images/icons/user.png",
+        "selectedIconPath": "images/icons/user-a.png"
+      }
+    ]
   }
 }

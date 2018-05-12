@@ -1,2 +1,67 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<swiper autoplay='true' indicator-dots='true' indicator-active-color="#F04848">
+  <swiper-item wx:for="{{indextop}}">
+    <navigator url='{{item.link}}'>
+      <image src='{{uploadpath}}banner/{{item.pic}}' class='indextopimg' mode="aspectFill"></image>
+    </navigator>
+  </swiper-item>
+</swiper>
+
+<scroll-view scroll-x style="width: 100%;">
+  <view class='flex-row white-block'>
+    <navigator url='/pages/category/category?id={{item.id}}' class='category-item text-center' wx:for="{{categories}}" wx:key="categories">
+      <view>
+        <image src="{{uploadpath}}merchantcategory/{{item.logo}}"></image>
+      </view>
+      <view>
+        {{item.name}}
+      </view>
+    </navigator>
+  </view>
+</scroll-view>
+
+
+<view class='subbar flex-row'>
+  <view class='firsttab'></view>
+  <view class='secondtab'>推荐商家</view>
+  <view class='thirdtab flex-1 text-right'></view>
+</view>
+<view class='white-block'>
+  <navigator url='/pages/merchant/merchant?id={{item.id}}' wx:for="{{indexrecomm}}" wx:key="k" class='flex-row rowitem'>
+    <view>
+      <image src='{{uploadpath}}merchant/{{item.logo}}' class='imgcover' mode='aspectFill'></image>
+    </view>
+    <view class='flex-1'>
+      <view class='headtitle'>{{item.name}}</view>
+      <view class='headdescription'>
+        {{item.summary}}
+      </view>
+    </view>
+  </navigator>
+</view>
+
+
+<block wx:for="{{categories}}" wx:key="categories">
+  <view class='subbar flex-row'>
+    <view class='firsttab'></view>
+    <view class='secondtab'>{{item.name}}</view>
+    <navigator url="/pages/category/category?id={{item.id}}&title={{item.name}}" class='thirdtab flex-1 text-right'>更多</navigator>
+  </view>
+  <view class='blockrow flex-row' style='flex-wrap:wrap'>
+    <navigator url='/pages/merchant/merchant?id={{item.id}}' class='blockitem' wx:for="{{item.indexrecommmerchants}}" wx:key="k2">
+      <view>
+        <image src='{{uploadpath}}merchant/{{item.logo}}' class='imgcover' mode='aspectFill'></image>
+      </view>
+      <view class='headtitle'>
+        {{item.name}}
+      </view>
+      <view class='headdescription'>
+        {{item.summary}}
+      </view>
+    </navigator>
+  </view>
+</block>
+<view class='inbottomla'>
+  到底啦
+</view>
+<view class='bottom-block'></view>

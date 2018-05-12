@@ -1,1 +1,16 @@
 /* pages/home/home.wxss */
+.indextopimg{
+  width: 100%;
+}
+
+.category-item {
+  font-size: 22rpx;
+  padding-bottom:15rpx;
+}
+.category-item image{
+  width:100rpx;
+  height:100rpx;
+  border-radius: 50%;
+  margin:20rpx;
+  margin-bottom:5rpx;
+}

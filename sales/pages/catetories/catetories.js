@@ -1,6 +1,7 @@
 // pages/content/content.js
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
+import { MerchantApi } from "../../apis/merchant.api";
 
 class Content extends AppBase {
   constructor() {
@@ -13,6 +14,11 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
+
+    var merchantapi = new MerchantApi();
+    merchantapi.categories({}, (categories) => {
+      this.Base.setMyData({ categories });
+    });
   }
 
 }
