@@ -21,4 +21,12 @@
       <input type='number'  maxlength='6' class='input h4' placeholder='请输入验证码' bindinput='verifycodeChange' value='{{verifycode}}' ></input>   
     </view>
   </view>
+  <view class='h6 des text-center'>成功登录后，代表你已同意并自愿遵守<label data-title="使用协议" data-keycode="useragreement" bindtap='openContent' class='text-underline'>使用协议</label></view>
+</view>
+
+
+
+<view class='block-100'></view>
+<view class='fixedbottom'>
+<button type='primary' bindtap='login'>登录</button>
 </view>

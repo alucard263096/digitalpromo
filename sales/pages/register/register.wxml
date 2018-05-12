@@ -1,48 +1,49 @@
 <!--pages/register/register.wxml-->
 <!--pages/login/login.wxml-->
-<view class='bg-primary  flex-row bigheader'>
-  <view class='txt-white h1 '>快速注册</view>
+<view class='bg-primary  bigheader'>
+  <view class='txt-white h1 '>快速注册<label wx:if="{{status}}">({{status_name}})</label></view>
+  <view class='txt-white h6 ' style='margin-top:10rpx;' wx:if="{{back_reason}}">申请失败：{{back_reason}}</view>
 </view>
 
 <view class='logininfo'>
   <view class='flex-row row'>
     <view class='flex-1'>
-      <input type='text' maxlength='20' class='input h4' placeholder='请输入真实姓名' bindinput='nameChange' value='{{name}}' focus="{{true}}" auto-focus></input>
+      <input type='text' maxlength='20' class='input h4' placeholder='请输入真实姓名' bindinput='nameChange' value='{{name}}' focus="{{true}}" auto-focus disabled='{{status=="R"}}'></input>
     </view>
   </view>
   <view class='flex-row row'>
     <view class='flex-1'>
-      <input type='number' maxlength='18' class='input h4' placeholder='请输入身份证号码' bindinput='idcardnoChange' value='{{idcardno}}'></input>
+      <input type='number' maxlength='18' class='input h4' placeholder='请输入身份证号码' bindinput='idcardnoChange' value='{{idcardno}}' disabled='{{status=="R"}}'></input>
     </view>
   </view>
 
   <view class='row flex-row text-center'>
     <view class='flex-1'>
-      <image src='{{uploadpath}}resource/idcard.png' wx:if="{{idcard==''}}" style='width:90%;' mode="widthFix" bindtap='idcardChoose'></image>
-      <image src='{{uploadpath}}sales/{{idcard}}' wx:if="{{idcard!=''}}" style='width:90%;' mode="widthFix" bindtap='idcardChoose'></image>
+      <image wx:if="{{idcard==''}}"  src='{{uploadpath}}resource/idcard.png'style='width:90%;' mode="widthFix" bindtap='idcardChoose'></image>
+      <image wx:if="{{idcard!=''}}"  src='{{uploadpath}}sales/{{idcard}}'style='width:90%;' mode="widthFix" bindtap='idcardChoose' disabled='{{status=="R"}}'></image>
     </view>
     <view class='flex-1'>
-      <image src='{{uploadpath}}resource/idcardback.png' wx:if="{{idcardback==''}}" style='width:90%;' mode="widthFix" bindtap='idcardbackChoose'></image>
-      <image src='{{uploadpath}}sales/{{idcardback}}' wx:if="{{idcardback!=''}}" style='width:90%;' mode="widthFix" bindtap='idcardbackChoose'></image>
+      <image wx:if="{{idcardback==''}}" src='{{uploadpath}}resource/idcardback.png' style='width:90%;' mode="widthFix" bindtap='idcardbackChoose'></image>
+      <image wx:if="{{idcardback!=''}}" src='{{uploadpath}}sales/{{idcardback}}' style='width:90%;' mode="widthFix" bindtap='idcardbackChoose' disabled='{{status=="R"}}'></image>
     </view>
   </view>
   <view class='row flex-row text-center'>
     <view class='flex-1'>
-      <image src='{{uploadpath}}resource/idcardinhand.png' wx:if="{{idcardinhand==''}}" style='width:90%;' mode="widthFix" bindtap='idcardinhandChoose'></image>
-      <image src='{{uploadpath}}sales/{{idcardinhand}}' wx:if="{{idcardinhand!=''}}" style='width:90%;' mode="widthFix" bindtap='idcardinhandChoose'></image>
+      <image wx:if="{{idcardinhand==''}}" src='{{uploadpath}}resource/idcardinhand.png' style='width:90%;' mode="widthFix" bindtap='idcardinhandChoose'></image>
+      <image wx:if="{{idcardinhand!=''}}" src='{{uploadpath}}sales/{{idcardinhand}}' style='width:90%;' mode="widthFix" bindtap='idcardinhandChoose' disabled='{{status=="R"}}'></image>
     </view>
     <view class='flex-1'>
     </view>
   </view>
   <view class='flex-row row'>
     <view class='flex-1'>
-      <textarea type='text' auto-height="true" maxlength='100' class='input h4' style='padding-bottom:20rpx;width:100%' placeholder='申请原因' bindinput='reasonChange' value='{{reason}}'></textarea>
+      <textarea type='text' auto-height="true" maxlength='100' class='input h4' style='padding-bottom:20rpx;width:100%' placeholder='申请原因' bindinput='reasonChange' value='{{reason}}' disabled='{{status=="R"}}' disabled='{{status=="R"}}'></textarea>
     </view>
   </view>
 
   <view class='flex-row row'>
     <view class='flex-1'>
-      <input type='number' maxlength='11' class='input h4' placeholder='请输入手机号码'  bindinput='mobileChange' value='{{mobile}}'></input>
+      <input type='number' maxlength='11' class='input h4' placeholder='请输入手机号码'  bindinput='mobileChange' value='{{mobile}}'  disabled='{{status=="R"}}'></input>
     </view>
     <view>
       <button type="primary" size="mini" bindtap='sendVerifycode' wx:if="{{reminderResend==0}}" disabled="{{mobile.length!=11}}"> 获取验证码 </button>
@@ -56,6 +57,12 @@
   </view>
 </view>
 
-<view class='padding-20'>
-<button type='primary' bindtap='register'>提交注册</button>
+<view class='block-100'></view>
+<view class='fixedbottom'>
+  <view class='h6  text-center' style='margin-bottom:30rpx;'>提交注册信息后，代表你已同意<label data-title="销售注册协议" data-keycode="salesregisteragreement" bindtap='openContent' class='text-underline'>销售注册协议</label></view>
+<form bindsubmit="register"  report-submit>
+<button type='primary' form-type='submit' wx:if="{{status==null}}">提交注册</button>
+<button type='primary' disabled='disabled' wx:if="{{status=='R'}}">审核中</button>
+<button type='primary' form-type='submit'  wx:if="{{status=='F'}}">重新提交 </button>
+</form>
 </view>

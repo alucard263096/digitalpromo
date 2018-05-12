@@ -1,5 +1,6 @@
 // pages/content/content.js
 import { AppBase } from "../../appbase";
+import { ApiConfig } from "../../apis/apiconfig";
 import { SalesApi } from "../../apis/sales.api";
 
 class Content extends AppBase {
@@ -25,6 +26,26 @@ class Content extends AppBase {
   onShow() {
     var that = this;
 
+    if (this.Base.options.mobile != undefined) {
+      var salesapi = new SalesApi();
+      salesapi.infobymobile({ mobile: this.Base.options.mobile }, (ret) => {
+        ret.primary_id = ret.id;
+        var status=this.Base.getMyData().status;
+        if(ret.status=='A'){
+
+          ApiConfig.SetToken(ret.token);
+          wx.setStorageSync("loginmobile", ret.mobile);
+          wx.setStorageSync("logintoken", ret.token);
+
+          wx.navigateTo({
+            url: '/pages/home/home',
+          })
+        }
+        if (status != ret.status) {
+          this.Base.setMyData(ret);
+        }
+      });
+    }
   }
   verifycodeChange(e) {
     this.Base.setMyData({ verifycode: e.detail.value });
@@ -128,12 +149,9 @@ class Content extends AppBase {
     var salesApi = new SalesApi();
     salesApi.register(data,(ret)=>{
       if(ret.code==0){
-        wx.showToast({
-          title: '注册成功，正在登录中',
-        });
-        wx.navigateTo({
-          url: '/pages/index/index',
-        })
+        this.Base.info("提交成功，正在等待管理员审核");
+        wx.setStorageSync("loginmobile", data.mobile);
+        this.Base.setMyData({status:"R",status_name:"审核中"});
       }else{
         this.Base.info(ret.return);
       }

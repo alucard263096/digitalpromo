@@ -9,3 +9,6 @@
 .logininfo{
   padding:40rpx;
 }
+.logininfo .des{
+  margin-top: 30rpx;
+}

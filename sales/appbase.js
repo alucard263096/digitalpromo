@@ -4,6 +4,8 @@ import { WechatApi } from "../apis/wechat.api";
  */
 import { ApiConfig } from "apis/apiconfig.js";
 import { ApiUtil } from "apis/apiutil.js";
+import { SalesApi } from "apis/sales.api.js";
+
 export class AppBase {
 
   static UserInfo = {};
@@ -67,6 +69,7 @@ export class AppBase {
        * 用户点击右上角分享
        */
       onShareAppMessage: base.onShareAppMessage,
+      onMyShow: base.onMyShow, 
 
       viewPhoto: base.viewPhoto,
       phoneCall: base.phoneCall,
@@ -76,8 +79,9 @@ export class AppBase {
       logout: base.logout,
       switchTab: base.switchTab,
       closePage: base.closePage,
-      gotoPage: base.gotoPage,
-      navtoPage: base.navtoPage
+      gotoPage: base.gotoPage, 
+      navtoPage: base.navtoPage,
+      openContent: base.openContent
     }
   }
   log() {
@@ -89,7 +93,8 @@ export class AppBase {
     console.log("onload");
     this.Base.setBasicInfo();
     this.Base.setMyData({});
-
+    var token=wx.getStorageSync("logintoken");
+    ApiConfig.SetToken(token);
     wx.hideShareMenu({
       
     })
@@ -121,16 +126,36 @@ export class AppBase {
   }
   onShow() {
     var that = this;
-    if (AppBase.UserInfo == undefined) {
-      // 登录
-      console.log("onShow");
-      
-      return false;
+    this.Base.console("ApiConfig.TOKEN", ApiConfig.TOKEN);
+    if (ApiConfig.TOKEN == undefined) {
+      // 没有登录标记，直接踢到登录页面去
+      wx.redirectTo({
+        url: '/pages/login/login',
+      });
     } else {
-      
+      var api=new SalesApi();
+      api.info({},(ret)=>{
+        if(ret==null){
+          wx.redirectTo({
+            url: '/pages/login/login',
+          });
+          return;
+        }
+        if(ret.status=="A"){
+          that.Base.setMyData({ UserInfo: ret });
+          that.onMyShow();
+        }
+        if (ret.status == "R" || ret.status == "F") {
+          wx.redirectTo({
+            url: '/pages/register/register?mobile='+ret.mobile,
+          });
+        }
+      });
     }
-    this.Base.getAddress();
-    return true;
+    //this.Base.getAddress();
+  }
+  onMyShow(){
+    console.log("onMyShow");
   }
   onHide() {
     console.log("onHide");
@@ -184,7 +209,7 @@ export class AppBase {
   getAddress(lat, lng) {
     var that=this;
     if (AppBase.QQMAP == null) {
-      var QQMapWX = require('../libs/qqmap/qqmap-wx-jssdk.js');
+      var QQMapWX = require('libs/qqmap/qqmap-wx-jssdk.js');
       AppBase.QQMAP = new QQMapWX({
         key: 'IDVBZ-TSAKD-TXG43-H442I-74KVK-6LFF5'
       });
@@ -559,5 +584,16 @@ export class AppBase {
   }
   closePage() {
 
+  }
+  openContent(e){
+    var title=e.target.dataset.title;
+    var keycode = e.target.dataset.keycode;
+    wx.navigateTo({
+      url: '/pages/content/content?keycode='+keycode+"&title="+title,
+    })
+  }
+  console(key,val){
+    var json={key,val};
+    console.log(json);
   }
 } 

@@ -1,7 +1,9 @@
 {
   "pages":[
-    "pages/register/register",
+    "pages/home/home",
     "pages/login/login",
+    "pages/register/register",
+    "pages/content/content",
     "pages/index/index",
     "pages/logs/logs"
   ],
@@ -9,6 +11,6 @@
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#F04848",
     "navigationBarTitleText": "数聚新零售",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"white"
   }
 }
