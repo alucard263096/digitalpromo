@@ -18,13 +18,21 @@ view,navigator{
 .text-right{
   text-align: right;
 }
-
+.white-block{
+  background: white;
+}
 .bg-primary{
   background: #F04848;
 }
 
+.txt-primary{
+  color:#F04848;
+}
 .txt-white{
   color:white;
+}
+.txt-gray{
+  color:#ddd;
 }
 
 .h1{
@@ -47,6 +55,9 @@ view,navigator{
 }
 .text-underline{
   text-decoration: underline;
+}
+.text-line-through{
+  text-decoration: line-through;
 }
 
 button[type=primary]{
@@ -206,4 +217,23 @@ margin-top: 10rpx;
 }
 .navigator-hover{
   background: transparent;
+}
+
+
+.tabs{
+  box-shadow: 0rpx 2rpx 2rpx #f2f2f2;
+  background: white;
+  margin-bottom: 2rpx;
+}
+.tab{
+  text-align: center;
+  font-size: 32rpx;
+}
+.tab .tabtext{
+  padding-top:18rpx;
+  padding-bottom:18rpx;
+}
+.tab .active{
+  border-bottom: 6rpx solid #F04848;
+  color:#F04848;
 }

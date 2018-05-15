@@ -1,0 +1,5 @@
+/* pages/goods/goods.wxss */
+.cover{
+  width: 100vw;
+  height: 100vw;
+}

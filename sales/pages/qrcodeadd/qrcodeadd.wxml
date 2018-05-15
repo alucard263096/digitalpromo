@@ -1,0 +1,23 @@
+<!--pages/qrcodeadd/qrcodeadd.wxml-->
+<form bindsubmit='dataSubmit'>
+
+  <view class='subbar '>
+    <view class='flex-row'>
+      <view class='firsttab'></view>
+      <view class='secondtab'>名称</view>
+      <view class='thirdtab flex-1 text-right'></view>
+    </view>
+    <view style='margin-top:20rpx;'>
+      <input name="name" value='{{name}}' placeholder='请输入名称' maxlength='20'></input>
+    </view>
+    <view class='flex-row' style='margin-top:40rpx;'>
+      <view class='firsttab'></view>
+      <view class='secondtab'>备注</view>
+      <view class='thirdtab flex-1 text-right'></view>
+    </view>
+    <view style='margin-top:20rpx;'>
+      <textarea name="summary" value='{{summary}}' placeholder='帮助记忆的备注信息' style='height:100rpx;width:100%'   maxlength='144'         ></textarea>
+    </view>
+  </view>
+
+</form>

@@ -1,7 +1,7 @@
 // pages/content/content.js
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
-import { MerchantApi } from "../../apis/merchant.api";
+import { QrcodeApi } from "../../apis/qrcode.api";
 
 class Content extends AppBase {
   constructor() {
@@ -9,20 +9,14 @@ class Content extends AppBase {
   }
   onLoad(options) {
     this.Base.Page = this;
-    //options.id=1;
-    //options.title="aaaa";
+    //options.id=5;
     super.onLoad(options);
-    //this.Base.setMyData({title:});
-    wx.setNavigationBarTitle({
-      title: this.Base.options.title,
-    })
   }
   onMyShow() {
     var that = this;
-
-    var merchantapi = new MerchantApi();
-    merchantapi.list({id:this.Base.options.id}, (list) => {
-      this.Base.setMyData({ list });
+    var api = new QrcodeApi();
+    api.list({},(list)=>{
+      this.Base.setMyData({ list});
     });
   }
 

@@ -1,2 +1,118 @@
 <!--pages/merchant/merchant.wxml-->
-<text>pages/merchant/merchant.wxml</text>
+<view>
+  <view class='flex-row padding-20 white-block'>
+    <view>
+      <image class='logo' src='{{uploadpath}}merchant/{{logo}}'></image>
+    </view>
+    <view class='flex-1' style='padding-left:20rpx;'>
+      <view class=''>{{name}}</view>
+      <view class='h6 txt-gray' style='margin-top:10rpx;'>{{summary}}</view>
+    </view>
+    <view>
+      <button size='mini' wx:if="{{favorited==false}}" bindtap='favoriteMerchant'>+ 关注</button>
+      <button size='mini' type="primary" wx:if="{{favorited==true}}" bindtap='favoriteMerchant'>已关注</button>
+    </view>
+  </view>
+
+  <view class='flex-row tabs'>
+    <view class='flex-1 tab  flex-row ' bindtap='changeTab' id="0">
+      <view class='flex-1'></view>
+      <view class='tabtext {{currenttab==0?"active":""}}'>商家信息</view>
+      <view class='flex-1'></view>
+    </view>
+
+    <view class='flex-1 tab flex-row ' bindtap='changeTab' id="1">
+      <view class='flex-1'></view>
+      <view class='tabtext {{currenttab==1?"active":""}}'>商品列表</view>
+      <view class='flex-1'></view>
+    </view>
+
+  </view>
+</view>
+<swiper indicator-dots="{{false}}" current='{{currenttab}}' bindchange="changeCurrentTab" class="maintabs">
+  <swiper-item>
+    <scroll-view scroll-y class='maintab-item'>
+
+      <view class='flex-row padding-20'>
+        <view class='flex-1 text-center' bindtap='viewPhoto' id="{{uploadpath}}resource/permit.png">
+          <view>
+            <image class='maintab_icon' src='{{uploadpath}}resource/permit.png'></image>
+          </view>
+          <view class='h6 txt-gray'>
+            营业执照
+          </view>
+        </view>
+        <view class='flex-1 text-center' bindtap='phoneCall' id="{{tel}}">
+          <view>
+            <image class='maintab_icon' src='{{uploadpath}}resource/phone.png'></image>
+          </view>
+          <view class='h6 txt-gray'>
+            联系电话
+          </view>
+        </view>
+        <view class='flex-1 text-center' bindtap='openMap' id="{{address}}">
+          <view>
+            <image class='maintab_icon' src='{{uploadpath}}resource/location.png'></image>
+          </view>
+          <view class='h6 txt-gray'>
+            办公地址
+          </view>
+        </view>
+      </view>
+
+      <view class='subbar flex-row'>
+        <view class='firsttab'></view>
+        <view class='secondtab'>推荐商品</view>
+        <view class='thirdtab flex-1 text-right'></view>
+      </view>
+      <view class='white-block'>
+        <navigator url='/pages/goods/goods?id={{item.id}}' wx:for="{{goodsrecomm}}" wx:key="k" class='flex-row rowitem'>
+          <view>
+            <image src='{{uploadpath}}goods/{{item.cover}}' class='imgcover' mode='aspectFill'></image>
+          </view>
+          <view class='flex-1'>
+            <view class='headtitle'>{{item.name}}</view>
+            <view class='headdescription'>
+              {{item.summary}}
+            </view>
+          </view>
+        </navigator>
+      </view>
+
+
+    </scroll-view>
+
+  </swiper-item>
+  <swiper-item>
+    <scroll-view scroll-y class='maintab-item'>
+      <view class='flex-row'>
+        <view style='width:25vw;'>
+          <view wx:for="{{goodscategory}}" wx:key="k" class='cat-tab h5 {{item.selected==true?"selected":""}}' bindtap='catSelected' id="{{item.id}}">
+            {{item.name}}
+          </view>
+        </view>
+        <view class='flex-1'>
+
+          <view class='white-block'  wx:for="{{goodscategory}}" wx:key="k" wx:if="{{item.selected}}" >
+            <navigator url='/pages/goods/goods?id={{item.id}}' wx:for="{{item.goods}}" wx:key="k2" class='flex-row rowitem'>
+              <view>
+                <image src='{{uploadpath}}goods/{{item.cover}}' class='imgcover' mode='aspectFill'></image>
+              </view>
+              <view class='flex-1'>
+                <view class='headtitle'>{{item.name}}</view>
+                <view class='headdescription'>
+                  {{item.summary}}
+                </view>
+              </view>
+            </navigator>
+          </view>
+
+
+        </view>
+      </view>
+
+
+    </scroll-view>
+
+  </swiper-item>
+</swiper>

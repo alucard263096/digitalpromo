@@ -261,7 +261,7 @@ export class AppBase {
   }
   openMap(e) {
     if (AppBase.QQMAP == null) {
-      var QQMapWX = require('../libs/qqmap/qqmap-wx-jssdk.js');
+      var QQMapWX = require('libs/qqmap/qqmap-wx-jssdk.js');
       AppBase.QQMAP = new QQMapWX({
         key: 'IDVBZ-TSAKD-TXG43-H442I-74KVK-6LFF5'
       });

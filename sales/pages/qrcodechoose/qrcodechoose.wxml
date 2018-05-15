@@ -1,0 +1,22 @@
+<!--pages/qrcodechoose/qrcodechoose.wxml-->
+<view class='white-block'>
+  <view  class='flex-row rowitem'>
+    <view>
+      <image src='{{uploadpath}}resource/plus.png' class='shot' mode='aspectFill'></image>
+    </view>
+    <view class='flex-1'>
+      <view class=' h2' style='margin-left:20rpx;margin-top:40rpx;'>新增二维码</view>
+    </view>
+  </view>
+  <view wx:for="{{list}}" wx:key="k" class='flex-row rowitem'>
+    <view>
+      <image src='{{uploadpath}}resource/qrcode.png' class='shot' mode='aspectFill'></image>
+    </view>
+    <view class='flex-1'>
+      <view class='headtitle'>{{item.name}}</view>
+      <view class='headdescription'>
+        {{item.summary}}
+      </view>
+    </view>
+  </view>
+</view>

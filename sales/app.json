@@ -1,10 +1,13 @@
 {
   "pages":[
+    "pages/qrcodeadd/qrcodeadd",
+    "pages/qrcodechoose/qrcodechoose",
+    "pages/goods/goods",
+    "pages/merchant/merchant",
     "pages/catetories/catetories",
+    "pages/category/category",
     "pages/home/home",
     "pages/qrcode/qrcode",
-    "pages/category/category",
-    "pages/merchant/merchant",
     "pages/static/static",
     "pages/profile/profile",
     "pages/login/login",

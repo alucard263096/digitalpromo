@@ -1,2 +1,14 @@
 <!--pages/category/category.wxml-->
-<text>pages/category/category.wxml</text>
+<view class='white-block'>
+  <navigator url='/pages/merchant/merchant?id={{item.id}}' wx:for="{{list}}" wx:key="k" class='flex-row rowitem'>
+    <view>
+      <image src='{{uploadpath}}merchant/{{item.logo}}' class='imgcover' mode='aspectFill'></image>
+    </view>
+    <view class='flex-1'>
+      <view class='headtitle'>{{item.name}}</view>
+      <view class='headdescription'>
+        {{item.summary}}
+      </view>
+    </view>
+  </navigator>
+</view>
