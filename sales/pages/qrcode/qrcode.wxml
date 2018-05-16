@@ -1,2 +1,25 @@
-<!--pages/qrcode/qrcode.wxml-->
-<text>pages/qrcode/qrcode.wxml</text>
+<!--pages/qrcodechoose/qrcodechoose.wxml-->
+<view class='white-block'>
+  <navigator url='/pages/qrcodeadd/qrcodeadd'  class='flex-row rowitem'>
+    <view>
+      <image src='{{uploadpath}}resource/plus.png' class='shot' mode='aspectFill'></image>
+    </view>
+    <view class='flex-1'>
+      <view class='headtitle'>新增二维码</view>
+    </view>
+  </navigator>
+  <navigator url='/pages/qrcodeadd/qrcodeadd?id={{item.id}}' wx:for="{{list}}" wx:key="k" class='flex-row rowitem'>
+    <view>
+      <image src='{{uploadpath}}resource/qrcode.png' class='shot' mode='aspectFill'></image>
+    </view>
+    <view class='flex-1'>
+      <view class='headtitle'>{{item.name}}</view>
+      <view class='headdescription'>
+        {{item.summary}}
+      </view>
+      <view class='headdescription'>
+        创建时间：{{item.created_date}}
+      </view>
+    </view>
+  </navigator>
+</view>

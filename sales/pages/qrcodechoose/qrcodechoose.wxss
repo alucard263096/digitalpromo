@@ -1,7 +1,7 @@
 /* pages/qrcodechoose/qrcodechoose.wxss */
 .shot{
-  width: 80rpx;
-  height:80rpx;
-  padding:40rpx;
+  width: 50rpx;
+  height:50rpx;
+  padding:20rpx;
   border:4rpx solid #cdcdcd;
 }

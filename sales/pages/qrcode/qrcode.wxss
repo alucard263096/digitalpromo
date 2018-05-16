@@ -1,1 +1,7 @@
 /* pages/qrcode/qrcode.wxss */
+.shot{
+  width: 50rpx;
+  height:50rpx;
+  padding:20rpx;
+  border:4rpx solid #cdcdcd;
+}

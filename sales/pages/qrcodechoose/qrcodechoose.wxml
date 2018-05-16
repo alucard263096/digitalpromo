@@ -1,14 +1,14 @@
 <!--pages/qrcodechoose/qrcodechoose.wxml-->
 <view class='white-block'>
-  <view  class='flex-row rowitem'>
+  <navigator url='/pages/qrcodeadd/qrcodeadd'  class='flex-row rowitem'>
     <view>
       <image src='{{uploadpath}}resource/plus.png' class='shot' mode='aspectFill'></image>
     </view>
     <view class='flex-1'>
-      <view class=' h2' style='margin-left:20rpx;margin-top:40rpx;'>新增二维码</view>
+      <view class='headtitle'>新增二维码</view>
     </view>
-  </view>
-  <view wx:for="{{list}}" wx:key="k" class='flex-row rowitem'>
+  </navigator>
+  <view url='/pages/qrcodeadd/qrcodeadd?id={{item.id}}' wx:for="{{list}}" wx:key="k" class='flex-row rowitem'>
     <view>
       <image src='{{uploadpath}}resource/qrcode.png' class='shot' mode='aspectFill'></image>
     </view>
@@ -17,6 +17,12 @@
       <view class='headdescription'>
         {{item.summary}}
       </view>
+      <view class='headdescription'>
+        创建时间：{{item.created_date}}
+      </view>
+    </view>
+    <view>
+      <button type='primary' size="mini" bindtap='addToQrcode' id="{{item.id}}">添加</button>
     </view>
   </view>
 </view>

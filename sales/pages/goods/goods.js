@@ -10,7 +10,7 @@ class Content extends AppBase {
   }
   onLoad(options) {
     this.Base.Page = this;
-    options.id=1;
+    //options.id=1;
     super.onLoad(options);
   }
   onMyShow() {
@@ -24,7 +24,7 @@ class Content extends AppBase {
   }
   chooseQRCode(){
     wx.navigateTo({
-      url: '/pages/qrcodechoose/qrcodechoose?goods_id'+this.Base.options.id,
+      url: '/pages/qrcodechoose/qrcodechoose?goods_id='+this.Base.options.id,
     })
   }
 }

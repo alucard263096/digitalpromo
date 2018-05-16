@@ -1,2 +1,20 @@
 <!--pages/profile/profile.wxml-->
-<text>pages/profile/profile.wxml</text>
+<!--pages/member/member.wxml-->
+
+<view class='block-tips'></view>
+<view class='white-block block'>
+<navigator url='/pages/salesinfo/salesinfo'  class='item item-split'>个人资料</navigator>
+</view>
+
+
+<view class='block-tips'></view>
+<view class='white-block block'>
+<navigator url='/pages/browsehistory/browsehistory'  class='item item-split'>浏览记录</navigator>
+<navigator url='/pages/favorite/favorite' class='item'>关注商家</navigator>
+</view>
+
+
+<view class='white-block block' style='margin-top:40rpx;'>
+<button open-type="contact" class='contactbutton'>联系客服</button>
+<navigator url='/pages/content/content?keycode=instruction&title=个人中心'  class='item'>关于我们</navigator>
+</view>

@@ -1,7 +1,7 @@
 // pages/content/content.js
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
-import { QrcodeApi } from "../../apis/qrcode.api";
+import { SalesApi } from "../../apis/sales.api";
 
 class Content extends AppBase {
   constructor() {
@@ -11,13 +11,12 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
+    
   }
   onMyShow() {
     var that = this;
-    var api = new QrcodeApi();
-    api.list({}, (list) => {
-      this.Base.setMyData({ list });
-    });
+    var Userinfo=this.Base.getMyData().UserInfo;
+    this.Base.setMyData(Userinfo);
   }
 }
 var content = new Content();

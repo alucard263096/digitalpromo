@@ -1,14 +1,13 @@
 <!--pages/qrcodeadd/qrcodeadd.wxml-->
-<form bindsubmit='dataSubmit'>
 
-  <view class='subbar '>
+  <view class='subbar ' style='padding-bottom:40rpx;'>
     <view class='flex-row'>
       <view class='firsttab'></view>
       <view class='secondtab'>名称</view>
       <view class='thirdtab flex-1 text-right'></view>
     </view>
     <view style='margin-top:20rpx;'>
-      <input name="name" value='{{name}}' placeholder='请输入名称' maxlength='20'></input>
+      <input  name="name" value='{{name}}' bindinput='nameChange' placeholder='请输入名称' maxlength='20'></input>
     </view>
     <view class='flex-row' style='margin-top:40rpx;'>
       <view class='firsttab'></view>
@@ -16,8 +15,49 @@
       <view class='thirdtab flex-1 text-right'></view>
     </view>
     <view style='margin-top:20rpx;'>
-      <textarea name="summary" value='{{summary}}' placeholder='帮助记忆的备注信息' style='height:100rpx;width:100%'   maxlength='144'         ></textarea>
+      <textarea  name="summary" value='{{summary}}' placeholder='帮助记忆的备注信息' style='height:100rpx;width:100%' auto-height='true'  maxlength='144'   bindinput      ='summaryChange'      ></textarea>
     </view>
+    <block wx:if="{{goods}}">
+    <view class='flex-row' style='margin-top:40rpx;'>
+      <view class='firsttab'></view>
+      <view class='secondtab'>商品信息</view>
+      <view class='thirdtab flex-1 text-right'></view>
+    </view>
+    <view style='margin-top:20rpx;'>
+      <view wx:if="{{goods.length==0}}">暂无商品</view>
+      <view class='white-block'>
+        <view url='/pages/goods/goods?id={{item.id}}' wx:for="{{goods}}" wx:key="k" class='flex-row rowitem'>
+          <view>
+            <image src='{{uploadpath}}goods/{{item.cover}}' class='imgcover' mode='aspectFill'></image>
+          </view>
+          <navigator url='/pages/goods/goods?id={{item.id}}' class='flex-1'>
+            <view class='headtitle'>{{item.name}}</view>
+            <view class='headdescription'>
+              商家名称：{{item.merchant_name}}
+            </view>
+            <view class='headdescription' style='color:#F04848' wx:if="{{item.status!='A'}}">
+              商品状态暂不可用
+            </view>
+            <view class='headdescription' style='color:#F04848'  wx:if="{{item.merchant_status!='A'}}">
+              商家状态暂不可用
+            </view>
+          </navigator>
+          <view>
+            <button size='mini' bindtap='removeGoods' id="{{item.id}}">移除</button>
+          </view>
+        </view>
+      </view>
+
+    </view>
+    </block>
   </view>
 
-</form>
+  <view class='padding-20' style='margin-top:80rpx;'>
+    <button type='primary' disabled='{{name==""}}' bindtap='save' >保存</button>
+  </view>
+  <view class='padding-20' style='margin-top:20rpx;'  wx:if="{{id}}">
+    <button type='primary'  >打开二维码店铺</button>
+  </view>
+  <view class='padding-20' style='margin-top:20rpx;'  wx:if="{{id}}">
+    <button bindtap='deletea'>删除</button>
+  </view>

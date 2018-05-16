@@ -1,0 +1,48 @@
+<!--pages/register/register.wxml-->
+<!--pages/login/login.wxml-->
+
+<view class='logininfo'>
+  <view class='flex-row row'>
+    <view >姓名：</view>
+    <view class='flex-1'>{{name}}</view>
+  </view>
+  <view class='flex-row row'>
+    <view >身份证号：</view>
+    <view class='flex-1'>{{idcardno}}</view>
+  </view>
+  <view class='flex-row row'>
+    <view >申请原因：</view>
+    <view class='flex-1'>{{reason}}</view>
+  </view>
+  <view class='flex-row row'>
+    <view >手机号码：</view>
+    <view class='flex-1'>{{mobile}}</view>
+  </view>
+
+  <view class='row flex-row text-center'>
+    <view class='flex-1'>
+      <image   src='{{uploadpath}}sales/{{idcard}}'style='width:90%;' mode="widthFix" ></image>
+    </view>
+    <view class='flex-1'>
+      <image  src='{{uploadpath}}sales/{{idcardback}}' style='width:90%;'mode="widthFix"  ></image>
+    </view>
+  </view>
+  <view class='row flex-row text-center'>
+    <view class='flex-1'>
+      <image  src='{{uploadpath}}sales/{{idcardinhand}}' style='width:90%;' mode="widthFix" ></image>
+    </view>
+    <view class='flex-1'>
+    </view>
+  </view>
+
+</view>
+
+<view class='block-100'></view>
+<view class='fixedbottom'>
+  <view class='h6  text-center' style='margin-bottom:30rpx;'>查看<label data-title="销售注册协议" data-keycode="salesregisteragreement" bindtap='openContent' class='text-underline'>销售注册协议</label></view>
+<form bindsubmit="register"  report-submit>
+<button type='primary' form-type='submit' wx:if="{{status==null}}">提交注册</button>
+<button type='primary' disabled='disabled' wx:if="{{status=='R'}}">审核中</button>
+<button type='primary' form-type='submit'  wx:if="{{status=='F'}}">重新提交 </button>
+</form>
+</view>
